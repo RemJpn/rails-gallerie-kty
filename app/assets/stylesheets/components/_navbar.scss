@@ -1,12 +1,13 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar-kty {
+  justify-content: space-around;
+  margin: 1rem 0;
+
+  a {
+    font-family: 'Calligraffitti';
+    font-size: 1.5rem;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-kty .navbar-collapse {
   flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }
