@@ -1,2 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Bienvenue chez Cathy</h1>
+
+
+<% @themes.each do |theme|  %>
+  <% next if theme.paintings.empty? %>
+
+  <div class="container">
+    <h4 class="category">
+      <%= theme.name %>
+    </h4>
+    <div class="slider container">
+      <div class="slider-cards">
+        <% theme.paintings.each do |painting| %>
+          <div class="card-painting">
+            <%= cl_image_tag painting.photo.key, height: 200, crop: :fill %>
+            <p>
+              <%= painting.name %>
+            </p>
+            <p>
+              <%= painting.dimensions %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <i class="fas fa-arrow-circle-right arrow"></i>
+      <!-- <button class="arrow">&#8594;</p> -->
+
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,37 @@
+.slider {
+  position: relative;
+  margin-bottom: 1.2rem;
+
+  .slider-cards {
+    display: flex;
+    overflow-x: scroll;
+
+    .card-painting{
+      display:flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-right: 15px;
+
+      img {
+        border: 3px solid $paintings-contrast;
+        padding: 5px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    color: $buttons;
+    background-color: white;
+    border-radius: 50%;
+    right: 0;
+    top: 50%;
+    transform: translateY( -50%);
+    font-size: 2rem;
+  }
+
+}
