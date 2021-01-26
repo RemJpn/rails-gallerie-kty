@@ -36,6 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   const toggleActive = e => {
 
     e.currentTarget.classList.toggle('active-title');
+    document.body.classList.toggle('profile-bg');
   }
 
   sectionTitles.forEach((title) => {
