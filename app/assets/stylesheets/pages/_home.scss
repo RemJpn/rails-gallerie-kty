@@ -18,6 +18,10 @@ body {
   --painting-height: 300px;
 }
 
+h1 {
+  height: 300px;
+}
+
 p {
   margin: 0;
   padding: 0;
@@ -30,14 +34,14 @@ p {
 }
 
 .title {
-  transition: all 0.5s ease-out;
+  transition: all 5s ease-out;
   width: fit-content;
   position: relative;
 
   &:after {
     content: '';
-    width: 0%;
-    border-bottom: 2px solid black;
+    width: 10%;
+    border-bottom: 2px solid transparent;
     position: absolute;
     bottom: -3px;
     right: -3px;

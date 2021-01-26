@@ -31,4 +31,14 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  const sectionTitles = document.querySelectorAll('.section-title');
+
+  const toggleActive = e => {
+
+    e.currentTarget.classList.toggle('active-title');
+  }
+
+  sectionTitles.forEach((title) => {
+    title.addEventListener('click', toggleActive);
+  });
 });
