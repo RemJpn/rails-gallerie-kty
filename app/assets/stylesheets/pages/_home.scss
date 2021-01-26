@@ -16,7 +16,7 @@ a {
 body {
   background-color: $paintings-bg;
   --painting-height: 300px;
-  transition: background-color 3s ease-out;
+  transition: background-color 0.5s ease-out;
 }
 
 .profile-bg {
