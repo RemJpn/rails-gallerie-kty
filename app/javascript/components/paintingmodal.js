@@ -8,7 +8,6 @@ const toggleModal = (e) => {
 
 
 const zoomIn = (element) => {
-
   //Create a clone of the painting
   const elementClone = element.cloneNode();
   const paintingCoord = element.getBoundingClientRect();
@@ -18,11 +17,14 @@ const zoomIn = (element) => {
   elementClone.style.left = `${paintingCoord.x}px`;
   elementClone.style.zIndex = 999;
   document.body.appendChild(elementClone);
+  elementClone.addEventListener('click', zoomOut, {once: true});
 
   //Calculate transformation
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
-  const scaleFactor = windowWidth * 0.8 / paintingCoord.width;
+  const scaleX = windowWidth * 0.8 / paintingCoord.width;
+  const scaleY = windowHeight * 0.8 / paintingCoord.height;
+  const scaleFactor = Math.min(scaleX, scaleY);
   const translateX = (windowWidth - paintingCoord.width) / 2 - paintingCoord.x;
   const translateY = (windowHeight - paintingCoord.height) / 2 - paintingCoord.y;
 
@@ -33,39 +35,12 @@ const zoomIn = (element) => {
     elementClone.style.padding = '0';
   });
 
-
-  /*
-  const slider = element.parentElement.parentElement;
-  console.dir(slider);
-  const sliderCoord = slider.getBoundingClientRect();
-  console.log(sliderCoord);
-  const paintingCoord = element.getBoundingClientRect();
-  const scrollY = window.scrollY;
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
-
-  const scaleFactor = windowWidth * 0.8 / paintingCoord.width;
-
-  const translateX = (windowWidth - paintingCoord.width) / 2 - paintingCoord.x;
-  const translateY = (windowHeight - paintingCoord.height) / 2 - paintingCoord.y;
-
-  element.style.transform = `translate(${translateX}px,${translateY}px) scale(${scaleFactor})`;
-  element.style.border = 'none';
-  element.style.padding = '0';
-  element.style.zIndex = 999;
-
-  element.parentElement.parentElement.style.overflow = 'visible';
-
-  element.classList.add('zoom');
-  */
+  //Adding dark background
   const darkBg = document.createElement('div');
   darkBg.classList.add('empty-bg');
   document.body.appendChild(darkBg);
   setTimeout(() => darkBg.classList.add('dark-bg'), 0);
-  ;
-
-  elementClone.addEventListener('click', zoomOut, {once: true});
-
+  darkBg.addEventListener('click', zoomOut, {once: true});
 }
 
 const zoomOut = () => {
@@ -86,26 +61,6 @@ const zoomOut = () => {
   });
   darkBg.classList.remove('dark-bg');
 }
-
-// const zoomOut = (element) => {
-//   element.style.transform = 'none';
-//   element.style.border = null;
-//   element.style.padding = null;
-//   element.classList.remove('zoom');
-//   element.addEventListener('transitionend', (e) => {
-//     console.log('overflow can be changed to scroll again');
-//     e.currentTarget.parentElement.parentElement.style.overflow = 'scroll'
-//     e.currentTarget.style.zIndex = null;
-//   }, {once: true});
-//   ;
-
-//   const darkBg = document.querySelector('.dark-bg');
-//   darkBg.addEventListener('transitionend', () => {
-//     console.log('transition ended')
-//     document.body.removeChild(darkBg);
-//   });
-//   darkBg.classList.remove('dark-bg');
-// }
 
 
 const initPaintingModals = () => {
