@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @themes = Theme.all.shuffle
+    @paintings = Painting.all
   end
 end

@@ -21,16 +21,3 @@
 
 }
 
-.empty-bg {
-  position: fixed;
-  inset: 0px;
-  opacity: 0;
-  z-index: 998;
-  background-color: rgba(0, 0, 0,0.8);
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
-}
-
-.dark-bg {
-  opacity: 1;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
-}

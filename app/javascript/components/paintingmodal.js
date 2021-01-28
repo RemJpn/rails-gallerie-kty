@@ -41,6 +41,15 @@ const zoomIn = (element) => {
   document.body.appendChild(darkBg);
   setTimeout(() => darkBg.classList.add('dark-bg'), 0);
   darkBg.addEventListener('click', zoomOut, {once: true});
+
+  //display associated details
+  const details = document.querySelector(`#details-${element.dataset.index}`);
+  console.log(details.innerText);
+  details.style.position = 'absolute';
+  details.style.zIndex = 1000;
+  details.style.top = '50%';
+  details.style.left = '50%';
+  details.classList.remove('d-none');
 }
 
 const zoomOut = () => {
@@ -49,15 +58,13 @@ const zoomOut = () => {
   zoomedPainting.style.border = null;
   zoomedPainting.style.padding = null;
   zoomedPainting.addEventListener('transitionend', (e) => {
-    console.log('overflow can be changed to scroll again');
     zoomedPainting.remove();
   }, {once: true});
 
 
   const darkBg = document.querySelector('.dark-bg');
   darkBg.addEventListener('transitionend', () => {
-    console.log('transition ended')
-    document.body.removeChild(darkBg);
+    darkBg.remove();
   });
   darkBg.classList.remove('dark-bg');
 }
