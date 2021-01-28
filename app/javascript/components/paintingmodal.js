@@ -57,6 +57,8 @@ const zoomOut = () => {
   zoomedPainting.style.transform = 'none';
   zoomedPainting.style.border = null;
   zoomedPainting.style.padding = null;
+  const details = document.querySelector(`#details-${zoomedPainting.dataset.index}`);
+  details.classList.add('d-none');
   zoomedPainting.addEventListener('transitionend', (e) => {
     zoomedPainting.remove();
   }, {once: true});
