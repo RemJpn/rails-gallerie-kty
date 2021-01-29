@@ -14,7 +14,7 @@
   padding: 5px;
   height: 200px;
   background-color: #F3F3F3;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
 }
 
 .empty-bg {
@@ -31,9 +31,37 @@
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
 }
 
+.zoomDiv {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+}
+
 .details {
   color: white;
   z-index: 1000;
   width: 30vw;
-  border: 1px solid red;
+  opacity: 0;
+  display: none;
+  padding: 1rem 0 0 1rem;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+  transition-delay:0.2s;
+
+  .title:after {
+    border-color:white;
+  }
+
+  p, h5{
+    font-weight: 300;
+  }
+
+  h5 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size:14px;
+    padding-left: 1rem;
+  }
+
 }

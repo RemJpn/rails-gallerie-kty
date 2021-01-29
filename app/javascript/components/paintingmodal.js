@@ -8,29 +8,41 @@ const toggleModal = (e) => {
 
 
 const zoomIn = (element) => {
+  //Select zoom div
+  const zoomDiv = document.querySelector(`#zoom-${element.dataset.index}`);
+  zoomDiv.style.position = 'absolute';
+  zoomDiv.style.zIndex = 1000;
+  const details = zoomDiv.querySelector('.details');
+  details.style.display = 'block'
+
   //Create a clone of the painting
   const elementClone = element.cloneNode();
   const paintingCoord = element.getBoundingClientRect();
-  elementClone.classList.add('zoom');
-  elementClone.style.position = 'absolute';
-  elementClone.style.top = `${paintingCoord.y + window.scrollY}px`;
-  elementClone.style.left = `${paintingCoord.x}px`;
-  elementClone.style.zIndex = 999;
-  document.body.appendChild(elementClone);
-  elementClone.addEventListener('click', zoomOut, {once: true});
+  zoomDiv.classList.add('zoom');
+  // elementClone.style.position = 'absolute';
+  zoomDiv.style.top = `${paintingCoord.y + window.scrollY}px`;
+  zoomDiv.style.left = `${paintingCoord.x}px`;
+  // elementClone.style.zIndex = 999;
+  // zoomDiv.appendChild(elementClone);
+  zoomDiv.insertAdjacentElement('afterbegin',elementClone);
+  zoomDiv.addEventListener('click', zoomOut, {once: true});
 
   //Calculate transformation
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
-  const scaleX = windowWidth * 0.8 / paintingCoord.width;
+  const scaleX = windowWidth * 0.5 / paintingCoord.width;
   const scaleY = windowHeight * 0.8 / paintingCoord.height;
   const scaleFactor = Math.min(scaleX, scaleY);
-  const translateX = (windowWidth - paintingCoord.width) / 2 - paintingCoord.x;
-  const translateY = (windowHeight - paintingCoord.height) / 2 - paintingCoord.y;
+  const translateX = (0.7 * windowWidth - paintingCoord.width * scaleFactor) / 2 - paintingCoord.x;
+  const translateY = (windowHeight - paintingCoord.height * scaleFactor) / 2 - paintingCoord.y;
 
   //Apply transformation after adding the clone to the DOM
   setTimeout(() => {
-    elementClone.style.transform = `translate(${translateX}px,${translateY}px) scale(${scaleFactor})`;
+    console.log(`translate(${translateX}px,${translateY}px)`);
+    zoomDiv.style.transform = `translate(${translateX}px,${translateY}px)`;
+    // elementClone.style.transform = `scale(${scaleFactor})`;
+    console.log(`${scaleFactor * paintingCoord.height}px`);
+    elementClone.style.height = `${scaleFactor * paintingCoord.height}px`;
     elementClone.style.border = 'none';
     elementClone.style.padding = '0';
   });
@@ -39,28 +51,40 @@ const zoomIn = (element) => {
   const darkBg = document.createElement('div');
   darkBg.classList.add('empty-bg');
   document.body.appendChild(darkBg);
-  setTimeout(() => darkBg.classList.add('dark-bg'), 0);
+  darkBg.addEventListener('transitionend', () => {
+    details.querySelector('.title').classList.add('active-title');
+  }, {once: true});
+  setTimeout(() => {
+    darkBg.classList.add('dark-bg')
+    details.style.opacity = 1;
+
+  }, 0);
   darkBg.addEventListener('click', zoomOut, {once: true});
 
-  //display associated details
-  const details = document.querySelector(`#details-${element.dataset.index}`);
-  console.log(details.innerText);
-  details.style.position = 'absolute';
-  details.style.zIndex = 1000;
-  details.style.top = '50%';
-  details.style.left = '50%';
-  details.classList.remove('d-none');
 }
 
 const zoomOut = () => {
-  const zoomedPainting = document.querySelector('.zoom');
-  zoomedPainting.style.transform = 'none';
-  zoomedPainting.style.border = null;
-  zoomedPainting.style.padding = null;
-  const details = document.querySelector(`#details-${zoomedPainting.dataset.index}`);
-  details.classList.add('d-none');
-  zoomedPainting.addEventListener('transitionend', (e) => {
-    zoomedPainting.remove();
+  const zoomDiv = document.querySelector('.zoom');
+  zoomDiv.style.transform = null;
+
+  const paintingClone = zoomDiv.querySelector('.framed-painting');
+  // paintingClone.style.transform = null;
+  paintingClone.style.height = null;
+  paintingClone.style.border = null;
+  paintingClone.style.padding = null;
+
+  const details = zoomDiv.querySelector('.details');
+  details.style.transitionDelay = 'unset';
+  details.style.opacity = null;
+  details.querySelector('.title').classList.remove('active-title');
+
+  paintingClone.addEventListener('transitionend', (e) => {
+    console.log('painting de-zoomed');
+    paintingClone.remove();
+    zoomDiv.style = null;
+    details.style = null;
+    //details.style.display = null;
+    zoomDiv.classList.remove('zoom');
   }, {once: true});
 
 

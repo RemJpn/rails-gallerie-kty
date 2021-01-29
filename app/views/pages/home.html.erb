@@ -34,13 +34,15 @@
 </div>
 
 <% @paintings.each do |painting| %>
-  <div class="details d-none" id="details-<%= painting.id %>">
-    <h4>
-      <%= painting.name %>
-    </h4>
-    <p><%= painting.year %></p>
-    <p><%= painting.dimensions %></p>
-    <p><%= painting.description %></p>
+  <div class="zoomDiv" id="zoom-<%= painting.id %>">
+    <div class="details">
+      <h5 class="title">
+        <%= painting.name %>
+      </h5>
+      <p><%= painting.year %></p>
+      <p><%= painting.dimensions %></p>
+      <p><%= painting.description %></p>
+    </div>
   </div>
 
 <% end %>

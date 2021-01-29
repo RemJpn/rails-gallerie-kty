@@ -53,26 +53,10 @@ p {
     transition: width 0.25s ease-out;
   }
 
-  // &:hover:after {
-  //   content: '';
-  //   width: 60%;
-  //   border-bottom: 2px solid black;
-  //   position: absolute;
-  //   bottom: -3px;
-  //   right: -3px;
-  //   transition: width 0.25s ease-out;
-  // }
-
 }
 
 .active-title:after {
-  content: '';
   width: 60%;
-  border-bottom: 2px solid black;
-  position: absolute;
-  bottom: -3px;
-  right: -3px;
-  transition: width 0.25s ease-out;
 }
 
 .profile {
