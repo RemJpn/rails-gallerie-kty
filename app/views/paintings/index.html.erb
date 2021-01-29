@@ -1,0 +1,18 @@
+<div class="paintings">
+
+  <% @themes.each do |theme|  %>
+    <% next if theme.paintings.empty? %>
+
+    <div class="container">
+      <h4 class="category title">
+        <%= theme.name %>
+      </h4>
+      <div class="">
+        <% theme.paintings.each do |painting| %>
+          <%= cl_image_tag painting.photo.key, class: "square-painting", "data-index" => painting.id %>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
