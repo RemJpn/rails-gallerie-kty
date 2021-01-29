@@ -29,10 +29,18 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initChangePage } from '../components/changepage';
 import { initPaintingModals } from '../components/paintingmodal';
+import { initPaintingSelect } from '../components/select';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initChangePage();
   initPaintingModals();
+  initPaintingSelect();
+  const error = document.querySelector('.error');
+  if (error) {
+    window.addEventListener("load", () => {
+      document.querySelector('#add-btn').click();
+    });
+  }
 });

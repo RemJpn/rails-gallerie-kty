@@ -1,0 +1,33 @@
+<div class="paintings">
+
+  <div class="menu">
+    <%= link_to "Ajouter", "#paintingModal", "data-toggle" => "modal", id: "add-btn" %>
+    <%= link_to "Modifier", "#", "data-toggle" => "modal", id: "modify-btn", class: "btn-disabled" %>
+    <%= link_to "Supprimer", "#", method: :delete, data: { confirm: 'Etes-vous sûr(e)?' }, id:"delete-btn", class: "btn-disabled" %>
+  </div>
+
+  <% @themes.each do |theme|  %>
+    <% next if theme.paintings.empty? %>
+
+    <div class="container">
+      <h4 class="category title">
+        <%= theme.name %>
+      </h4>
+      <div class="">
+        <% theme.paintings.each do |painting| %>
+          <%= cl_image_tag painting.photo.key, class: "square-painting", "data-index" => painting.id %>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<%= render partial:'shared/modal_painting', locals: {painting: @painting} %>
+<% @paintings.each do |painting| %>
+  <%= render partial:'shared/modal_painting', locals: {painting: painting}  %>
+<% end %>
+
+<% if @add_error %>
+  <div class="error"></div>
+<% end %>

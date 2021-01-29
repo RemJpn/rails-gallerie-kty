@@ -1,0 +1,46 @@
+<div class="modal fade" id="paintingModal<%= "-#{painting.id}" if painting.id %>" tabindex="-1" role="dialog" aria-labelledby="paintingModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <% if painting.id %>
+          <h6 class="modal-title">Modifier le tableau</h6>
+        <% else %>
+          <h6 class="modal-title">Ajouter un tableau</h6>
+        <% end %>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <%= simple_form_for painting do |f| %>
+          <div class="d-flex">
+            <div>
+              <%= f.input :photo, as: :file %>
+
+            </div>
+            <div>
+              <%= f.input :name %>
+              <div class="d-flex align-items-center">
+                <%= f.input :year %>
+                <%= f.input :dimensions %>
+              </div>
+              <%= f.association :theme, collection: @themes %>
+              <div class="d-flex align-items-end">
+                <%= f.input :number %>
+                <%= f.input :sold %>
+              </div>
+              <%= f.input :description %>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <%= f.button :submit, label: 'Ajouter', class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
