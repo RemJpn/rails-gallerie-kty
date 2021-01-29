@@ -1,5 +1,9 @@
 <div class="paintings">
 
+  <div class="menu">
+    <%= link_to "Ajouter", "#paintingModal", "data-toggle" => "modal", id: "add-btn" %>
+  </div>
+
   <% @themes.each do |theme|  %>
     <% next if theme.paintings.empty? %>
 
@@ -16,3 +20,9 @@
 
   <% end %>
 </div>
+
+<%= render 'shared/modal_painting' %>
+
+<% if @add_error %>
+  <div class="error"></div>
+<% end %>

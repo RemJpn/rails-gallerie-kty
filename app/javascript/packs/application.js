@@ -35,4 +35,10 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initChangePage();
   initPaintingModals();
+  const error = document.querySelector('.error');
+  if (error) {
+    window.addEventListener("load", () => {
+      document.querySelector('#add-btn').click();
+    });
+  }
 });
