@@ -1,0 +1,48 @@
+.empty-bg {
+  position: fixed;
+  inset: 0px;
+  opacity: 0;
+  z-index: 998;
+  background-color: rgba(0, 0, 0,0.8);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+}
+
+.dark-bg {
+  opacity: 1;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+}
+
+.zoomDiv {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+}
+
+.details {
+  color: white;
+  z-index: 1000;
+  width: 30vw;
+  opacity: 0;
+  display: none;
+  padding: 1rem 0 0 1rem;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+  transition-delay:0.2s;
+
+  .title:after {
+    border-color:white;
+  }
+
+  p, h5{
+    font-weight: 300;
+  }
+
+  h5 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size:14px;
+    padding-left: 1rem;
+  }
+
+}
