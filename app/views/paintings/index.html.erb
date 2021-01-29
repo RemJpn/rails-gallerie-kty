@@ -2,7 +2,8 @@
 
   <div class="menu">
     <%= link_to "Ajouter", "#paintingModal", "data-toggle" => "modal", id: "add-btn" %>
-    <%= link_to "Modifier", "#paintingModalxxx", "data-toggle" => "modal", id: "modify-btn", class: "btn-disabled" %>
+    <%= link_to "Modifier", "#", "data-toggle" => "modal", id: "modify-btn", class: "btn-disabled" %>
+    <%= link_to "Supprimer", "#", method: :delete, data: { confirm: 'Etes-vous sûr(e)?' }, id:"delete-btn", class: "btn-disabled" %>
   </div>
 
   <% @themes.each do |theme|  %>
