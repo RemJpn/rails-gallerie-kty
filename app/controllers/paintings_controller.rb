@@ -15,16 +15,19 @@ class PaintingsController < ApplicationController
     else
       @add_error = true
       @themes = Theme.all
-      render 'paintings/index', data: {remote: true, toggle: "modal", target: "#paintingModal"}
+      render 'paintings/index', data: { remote: true, toggle: "modal", target: "#paintingModal" }
     end
   end
 
-
+  def update
+    @painting = Painting.find(params[:id])
+    @painting.update(painting_params)
+    redirect_to admin_path
+  end
 
   private
 
   def painting_params
     params.require(:painting).permit(:name, :year, :dimensions, :theme_id, :number, :sold, :description, :photo)
   end
-
 end
