@@ -1,7 +1,23 @@
 <div class="paintings">
-  <div class="container">
+<!--   <div class="container">
     <h1 class="text-center">Bienvenue chez Cathy</h1>
+  </div> -->
+
+  <div class="container banner">
+    <% @paintings.shuffle.first(10).each do |painting| %>
+      <%= cl_image_tag painting.photo.key,
+        class: "painting-thumbnail",
+        crop: :thumb,
+        style: "
+          top: #{rand(200)}px;
+          left: #{rand(800)}px;
+          "
+        %>
+
+    <% end %>
   </div>
+
+
 
   <% @themes.each do |theme|  %>
     <% next if theme.paintings.empty? %>

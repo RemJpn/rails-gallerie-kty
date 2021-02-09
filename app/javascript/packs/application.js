@@ -30,6 +30,7 @@ import "bootstrap";
 import { initChangePage } from '../components/changepage';
 import { initPaintingModals } from '../components/paintingmodal';
 import { initPaintingSelect } from '../components/select';
+import { initBanner } from '../components/banner';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -43,4 +44,5 @@ document.addEventListener('turbolinks:load', () => {
       document.querySelector('#add-btn').click();
     });
   }
+  initBanner();
 });
