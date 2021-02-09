@@ -61,6 +61,8 @@ const zoomIn = (element) => {
   }, 0);
   darkBg.addEventListener('click', zoomOut, {once: true});
 
+  window.addEventListener('scroll', zoomOut, {once: true});
+
 }
 
 const zoomOut = () => {
