@@ -22,7 +22,7 @@ const showBanner = () => {
     thumbnail.style.transform = `rotate(${factor1*60 -30}deg)`;
 
     window.setTimeout( () => {
-      thumbnail.classList.add('show');
+      thumbnail.classList.add('thumbnail-show');
       thumbnail.style.transform = `rotate(${factor1*60 -30}deg) scale(0.95)`;
       }, factor1 * 1000)
   });
@@ -37,7 +37,7 @@ const showBanner = () => {
 
 
 const initBanner = () => {
-  document.onload = showBanner();
+  if (document.querySelector('.banner'))  document.onload = showBanner();
 }
 
 export {initBanner}

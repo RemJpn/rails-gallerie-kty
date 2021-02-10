@@ -1,16 +1,16 @@
 <div class="paintings">
 
   <div class="menu">
-    <%= link_to "Ajouter", "#paintingModal", "data-toggle" => "modal", id: "add-btn" %>
-    <%= link_to "Modifier", "#", "data-toggle" => "modal", id: "modify-btn", class: "btn-disabled" %>
-    <%= link_to "Supprimer", "#", method: :delete, data: { confirm: 'Etes-vous sûr(e)?' }, id:"delete-btn", class: "btn-disabled" %>
+    <%= link_to "Ajouter", "#paintingModal", "data-toggle" => "modal", id: "add-btn", class: "btn btn-primary" %>
+    <%= link_to "Modifier", "#", "data-toggle" => "modal", id: "modify-btn", class: "btn btn-warning btn-disabled" %>
+    <%= link_to "Supprimer", "#", method: :delete, data: { confirm: 'Etes-vous sûr(e)?' }, id:"delete-btn", class: "btn btn-danger btn-disabled" %>
   </div>
 
   <% @themes.each do |theme|  %>
     <% next if theme.paintings.empty? %>
 
-    <div class="container">
-      <h4 class="category title">
+    <div class="container admin-theme">
+      <h4 class="category title active-title">
         <%= theme.name %>
       </h4>
       <div class="">
@@ -23,7 +23,10 @@
   <% end %>
 </div>
 
+<!-- Add a painting -->
 <%= render partial:'shared/modal_painting', locals: {painting: @painting} %>
+
+<!-- Modify painting -->
 <% @paintings.each do |painting| %>
   <%= render partial:'shared/modal_painting', locals: {painting: painting}  %>
 <% end %>
