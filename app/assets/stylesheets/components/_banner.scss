@@ -19,7 +19,7 @@
 }
 
 .main-title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: 'Montserrat';
   font-weight: 200;
   position:absolute;
@@ -31,4 +31,10 @@
   padding: 0 0.5rem 0 0.3rem;
   background-color: $contrast;
   opacity: 0;
+}
+
+@media (min-width: 990px) {
+ .main-title{
+  font-size: 4rem;
+ }
 }
