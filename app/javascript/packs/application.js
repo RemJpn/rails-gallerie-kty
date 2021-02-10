@@ -31,6 +31,7 @@ import { initChangePage } from '../components/changepage';
 import { initPaintingModals } from '../components/paintingmodal';
 import { initPaintingSelect } from '../components/select';
 import { initBanner } from '../components/banner';
+import { initArrowButtons } from '../components/arrowbutton';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -45,4 +46,5 @@ document.addEventListener('turbolinks:load', () => {
     });
   }
   initBanner();
+  initArrowButtons();
 });

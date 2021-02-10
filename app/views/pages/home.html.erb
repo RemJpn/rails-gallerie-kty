@@ -27,6 +27,7 @@
           <%= theme.name %>
         </h4>
         <div class="slider container">
+          <button class="arrow prev button-hidden">&#8592;</button>
           <div class="slider-cards">
             <% theme.paintings.each do |painting| %>
               <div class="card-painting">
@@ -41,7 +42,7 @@
             <% end %>
           </div>
           <!-- <i class="fas fa-arrow-circle-right arrow"></i> -->
-          <button class="arrow">&#8594;</p>
+          <button class="arrow next button-hidden">&#8594;</button>
 
         </div>
       </div>
