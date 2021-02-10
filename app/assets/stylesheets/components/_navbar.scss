@@ -12,3 +12,10 @@
 .navbar-kty .navbar-collapse {
   flex-grow: 0;
 }
+
+
+.profile-bg {
+  .navbar-kty {
+    background-color: $darker-profile-bg;
+  }
+}

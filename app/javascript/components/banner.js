@@ -14,7 +14,7 @@ const showBanner = () => {
   paintingThumbnails.forEach( thumbnail => {
     const factor1 = Math.random();
     thumbnail.style.top = `${Math.random() * 0.7 * bannerHeight}px`;
-    thumbnail.style.left = `${Math.random() * 0.6 * windowWidth + 0.1 * windowWidth}px`;
+    thumbnail.style.left = `${(Math.random() * 0.6 + 0.2 ) * (windowWidth -150)}px`;
     thumbnail.style.zIndex = `${Math.floor(factor1 * 100)}`;
     thumbnail.style.transform = `rotate(${factor1*60 -30}deg)`;
 
