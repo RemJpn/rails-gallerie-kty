@@ -23,10 +23,6 @@ body {
   background-color: $profile-bg;
 }
 
-h1 {
-  height: 300px;
-}
-
 p {
   margin: 0;
   padding: 0;
@@ -63,7 +59,8 @@ p {
   position:relative;
 
   h1 {
-    font-size: 64px;
+    font-size: 4rem;
+    font-weight: 200;
     position:absolute;
     top: 125px;
     left: 12%;

@@ -1,10 +1,9 @@
 <div class="paintings">
 <!--   <div class="container">
-    <h1 class="text-center">Bienvenue chez Cathy</h1>
   </div> -->
 
-  <div class="container banner">
-    <% @paintings.shuffle.first(10).each do |painting| %>
+  <div class="banner">
+    <% @paintings.shuffle.first(20).each do |painting| %>
       <%= cl_image_tag painting.photo.key,
         class: "painting-thumbnail",
         crop: :thumb,
@@ -15,35 +14,38 @@
         %>
 
     <% end %>
+    <h1 class="main-title">Bienvenue chez Cathy </h1>
   </div>
 
 
 
   <% @themes.each do |theme|  %>
     <% next if theme.paintings.empty? %>
+    <div class="theme">
+      <div class="container">
+        <h4 class="category title active-title">
+          <%= theme.name %>
+        </h4>
+        <div class="slider container">
+          <div class="slider-cards">
+            <% theme.paintings.each do |painting| %>
+              <div class="card-painting">
+                <%= cl_image_tag painting.photo.key, class: "framed-painting", "data-index" => painting.id %>
+                <p>
+                  <%= painting.name %>
+                </p>
+                <p>
+                  <%= painting.dimensions %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+          <!-- <i class="fas fa-arrow-circle-right arrow"></i> -->
+          <button class="arrow">&#8594;</p>
 
-    <div class="container">
-      <h4 class="category title">
-        <%= theme.name %>
-      </h4>
-      <div class="slider container">
-        <div class="slider-cards">
-          <% theme.paintings.each do |painting| %>
-            <div class="card-painting">
-              <%= cl_image_tag painting.photo.key, class: "framed-painting", "data-index" => painting.id %>
-              <p>
-                <%= painting.name %>
-              </p>
-              <p>
-                <%= painting.dimensions %>
-              </p>
-            </div>
-          <% end %>
         </div>
-        <i class="fas fa-arrow-circle-right arrow"></i>
-        <!-- <button class="arrow">&#8594;</p> -->
-
       </div>
+
     </div>
 
   <% end %>

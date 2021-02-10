@@ -1,6 +1,13 @@
+.theme {
+  padding: 1rem 0;
+
+  &:nth-of-type(even) {
+    background-color: $darker-paintings-bg;
+  }
+}
+
 .slider {
   position: relative;
-  margin-bottom: 1.2rem;
 
   .slider-cards {
     display: flex;
@@ -10,13 +17,22 @@
 
   .arrow {
     position: absolute;
-    color: $buttons;
-    background-color: white;
+    color: black;
+    background-color: $contrast;
     border-radius: 50%;
     right: 0;
     top: 100px;
-    transform: translateY( -50%);
+    transform: translate(20%, -50%);
     font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border: none;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: $contrast;
+      background-color: white;
+    }
   }
 
 }
