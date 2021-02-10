@@ -1,8 +1,11 @@
-// Specific CSS for your home-page
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
+}
+
+html {
+  overflow: auto;
 }
 
 a {

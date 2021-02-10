@@ -38,10 +38,8 @@ const zoomIn = (element) => {
 
   //Apply transformation after adding the clone to the DOM
   setTimeout(() => {
-    console.log(`translate(${translateX}px,${translateY}px)`);
     zoomDiv.style.transform = `translate(${translateX}px,${translateY}px)`;
     // elementClone.style.transform = `scale(${scaleFactor})`;
-    console.log(`${scaleFactor * paintingCoord.height}px`);
     elementClone.style.height = `${scaleFactor * paintingCoord.height}px`;
     elementClone.style.border = 'none';
     elementClone.style.padding = '0';
