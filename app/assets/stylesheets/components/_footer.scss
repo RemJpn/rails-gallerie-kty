@@ -1,0 +1,32 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 65px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.45);
+  background-color: $darker-paintings-bg;
+
+  a {
+    color: black;
+    opacity: 0.3;
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+      opacity: 0.6;
+    }
+  }
+
+
+  .fa-heart {
+    color: #D23333;
+  }
+}
+
+.profile-bg {
+  .footer {
+    background-color: $darker-profile-bg;
+  }
+}
