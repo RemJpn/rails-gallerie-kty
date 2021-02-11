@@ -81,6 +81,10 @@ p {
     background-color: #8D5B4C;
     color: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+    &:hover {
+      background-color: $contrast;
+    }
   }
 }
 
