@@ -3,9 +3,14 @@
   flex-direction: column;
   align-items: flex-end;
   margin-right: 2rem;
+  cursor: pointer;
 
   p {
     font-size: 14px;
+  }
+  &:hover .framed-painting {
+    filter: saturate(0.3);
+    transform: scale(0.98);
   }
 }
 
@@ -14,7 +19,9 @@
   padding: 5px;
   height: 200px;
   background-color: #F3F3F3;
-  transition: height 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0, 1) 0s,
+    filter 0.2s cubic-bezier(0.4, 0, 0, 1) 0s,
+    transform 0.2s cubic-bezier(0.4, 0, 0, 1) 0s;
 }
 
 .square-painting {
