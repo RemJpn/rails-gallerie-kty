@@ -8,12 +8,14 @@ const toggleModal = (e) => {
 
 
 const zoomIn = (element) => {
+  console.log('zoom In');
+
   //Select zoom div
   const zoomDiv = document.querySelector(`#zoom-${element.dataset.index}`);
   zoomDiv.style.position = 'absolute';
   zoomDiv.style.zIndex = 1000;
   const details = zoomDiv.querySelector('.details');
-  details.style.display = 'block'
+  // details.style.display = 'block'
 
   //Create a clone of the painting
   const elementClone = element.cloneNode();
@@ -28,13 +30,47 @@ const zoomIn = (element) => {
   zoomDiv.addEventListener('click', zoomOut, {once: true});
 
   //Calculate transformation
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
-  const scaleX = windowWidth * 0.5 / paintingCoord.width;
-  const scaleY = windowHeight * 0.8 / paintingCoord.height;
-  const scaleFactor = Math.min(scaleX, scaleY);
-  const translateX = (0.7 * windowWidth - paintingCoord.width * scaleFactor) / 2 - paintingCoord.x;
-  const translateY = (windowHeight - paintingCoord.height * scaleFactor) / 2 - paintingCoord.y;
+  let windowWidth;
+  let windowHeight;
+  let scaleX;
+  let scaleY;
+  let scaleFactor;
+  let translateX;
+  let translateY;
+
+
+  // Adapt layout for mobiles
+  if ( window.innerWidth < 770 ) {
+    windowWidth = window.outerWidth;
+    windowHeight = window.outerHeight;
+    zoomDiv.style.flexDirection = 'column';
+
+    scaleX = windowWidth * 0.8 / paintingCoord.width;
+    console.log(`scaleX = ${scaleX}`);
+    scaleY = windowHeight * 0.5 / paintingCoord.height;
+    scaleFactor = Math.min(scaleX, scaleY);
+
+    translateX = (windowWidth - paintingCoord.width * scaleFactor) / 2 - paintingCoord.x;
+    translateY = (0.7 * windowHeight - paintingCoord.height * scaleFactor) / 2 - paintingCoord.y;
+    zoomDiv.querySelector('.details').style.width = `${scaleFactor * paintingCoord.width}px`;
+
+  } else {
+    windowWidth = window.innerWidth;
+    windowHeight = window.innerHeight;
+    scaleX = windowWidth * 0.5 / paintingCoord.width;
+    scaleY = windowHeight * 0.8 / paintingCoord.height;
+    scaleFactor = Math.min(scaleX, scaleY);
+    translateX = (0.7 * windowWidth - paintingCoord.width * scaleFactor) / 2 - paintingCoord.x;
+    translateY = (windowHeight - paintingCoord.height * scaleFactor) / 2 - paintingCoord.y;
+
+  }
+    console.log(`painting width = ${paintingCoord.width}`);
+    console.log(`window width = ${windowWidth}`);
+    console.log(`window height = ${windowHeight}`);
+  console.log(scaleFactor);
+  console.log(translateX);
+  console.log(translateY);
+
 
   //Apply transformation after adding the clone to the DOM
   setTimeout(() => {
@@ -43,6 +79,8 @@ const zoomIn = (element) => {
     elementClone.style.height = `${scaleFactor * paintingCoord.height}px`;
     elementClone.style.border = 'none';
     elementClone.style.padding = '0';
+
+    elementClone.addEventListener('transitionend', () => details.style.display = 'block' );
   });
 
   //Adding dark background
@@ -57,15 +95,20 @@ const zoomIn = (element) => {
     details.style.opacity = 1;
 
   }, 0);
-  darkBg.addEventListener('click', zoomOut, {once: true});
+  darkBg.addEventListener('click', zoomOut);
 
   window.addEventListener('scroll', zoomOut, {once: true});
 
 }
 
-const zoomOut = () => {
+const zoomOut = (event) => {
   const zoomDiv = document.querySelector('.zoom');
-  if (zoomDiv) {
+  const darkBg = document.querySelector('.empty-bg');
+
+  // if (zoomDiv && darkBg) {
+    console.log('zoom Out');
+    console.log(zoomDiv);
+    console.log(darkBg);
     zoomDiv.style.transform = null;
 
     const paintingClone = zoomDiv.querySelector('.framed-painting');
@@ -77,22 +120,22 @@ const zoomOut = () => {
     details.style.transitionDelay = 'unset';
     details.style.opacity = null;
     details.querySelector('.title').classList.remove('active-title');
+    details.style.width = null;
 
     paintingClone.addEventListener('transitionend', (e) => {
       paintingClone.remove();
       zoomDiv.style = null;
       details.style = null;
       zoomDiv.classList.remove('zoom');
-    }, {once: true});
-
-  }
-  const darkBg = document.querySelector('.dark-bg');
-  if (darkBg) {
-    darkBg.addEventListener('transitionend', () => {
       darkBg.remove();
     });
+
+    //removal of dark background
+    // darkBg.addEventListener('transitionend', () => {
+    //   darkBg.remove();
+    // });
     darkBg.classList.remove('dark-bg');
-  }
+  // }
 }
 
 

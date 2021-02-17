@@ -10,7 +10,6 @@ const handleScroll = (event) => {
   const slider = event.currentTarget;
   const next = slider.parentElement.querySelector('.next');
   const prev = slider.parentElement.querySelector('.prev');
-  console.dir(slider)
 
   if (slider.scrollLeft === 0) {
     prev.classList.add('button-hidden');
