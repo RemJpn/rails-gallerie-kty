@@ -1,6 +1,9 @@
 .empty-bg {
   position: fixed;
-  inset: 0px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
   opacity: 0;
   z-index: 998;
   background-color: rgba(0, 0, 0,0.8);

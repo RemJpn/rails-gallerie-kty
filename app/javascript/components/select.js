@@ -22,7 +22,6 @@ const select = (e) => {
 
 const initPaintingSelect = () => {
   const paintings = document.querySelectorAll('.square-painting');
-  console.log(paintings);
 
   paintings.forEach((painting) => {
     painting.addEventListener('click', select);

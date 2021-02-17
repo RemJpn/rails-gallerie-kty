@@ -65,34 +65,34 @@ const zoomIn = (element) => {
 
 const zoomOut = () => {
   const zoomDiv = document.querySelector('.zoom');
-  zoomDiv.style.transform = null;
+  if (zoomDiv) {
+    zoomDiv.style.transform = null;
 
-  const paintingClone = zoomDiv.querySelector('.framed-painting');
-  // paintingClone.style.transform = null;
-  paintingClone.style.height = null;
-  paintingClone.style.border = null;
-  paintingClone.style.padding = null;
+    const paintingClone = zoomDiv.querySelector('.framed-painting');
+    paintingClone.style.height = null;
+    paintingClone.style.border = null;
+    paintingClone.style.padding = null;
 
-  const details = zoomDiv.querySelector('.details');
-  details.style.transitionDelay = 'unset';
-  details.style.opacity = null;
-  details.querySelector('.title').classList.remove('active-title');
+    const details = zoomDiv.querySelector('.details');
+    details.style.transitionDelay = 'unset';
+    details.style.opacity = null;
+    details.querySelector('.title').classList.remove('active-title');
 
-  paintingClone.addEventListener('transitionend', (e) => {
-    console.log('painting de-zoomed');
-    paintingClone.remove();
-    zoomDiv.style = null;
-    details.style = null;
-    //details.style.display = null;
-    zoomDiv.classList.remove('zoom');
-  }, {once: true});
+    paintingClone.addEventListener('transitionend', (e) => {
+      paintingClone.remove();
+      zoomDiv.style = null;
+      details.style = null;
+      zoomDiv.classList.remove('zoom');
+    }, {once: true});
 
-
+  }
   const darkBg = document.querySelector('.dark-bg');
-  darkBg.addEventListener('transitionend', () => {
-    darkBg.remove();
-  });
-  darkBg.classList.remove('dark-bg');
+  if (darkBg) {
+    darkBg.addEventListener('transitionend', () => {
+      darkBg.remove();
+    });
+    darkBg.classList.remove('dark-bg');
+  }
 }
 
 
