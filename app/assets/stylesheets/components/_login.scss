@@ -1,0 +1,17 @@
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 280px;
+  height:450px;
+  border-radius: 10px;
+  background-color: $darker-paintings-bg;
+  border: 0.7px solid rgba(0,0,0,0.2);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
