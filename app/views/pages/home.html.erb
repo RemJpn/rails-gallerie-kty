@@ -31,7 +31,7 @@
         <div class="slider container">
           <button class="arrow prev button-hidden">&#8592;</button>
           <div class="slider-cards">
-            <% theme.paintings.each do |painting| %>
+            <% theme.paintings.sort_by(&:year).reverse.each do |painting| %>
               <div class="card-painting">
                 <%= cl_image_tag painting.photo.key, class: "framed-painting", "data-index" => painting.id %>
                 <p>
