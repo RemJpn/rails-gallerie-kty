@@ -27,7 +27,7 @@ const zoomIn = (element) => {
   // elementClone.style.zIndex = 999;
   // zoomDiv.appendChild(elementClone);
   zoomDiv.insertAdjacentElement('afterbegin',elementClone);
-  zoomDiv.addEventListener('click', zoomOut, {once: true});
+  zoomDiv.addEventListener('click', zoomOut);
 
   //Calculate transformation
   let windowWidth;
@@ -89,16 +89,15 @@ const zoomIn = (element) => {
   document.body.appendChild(darkBg);
   darkBg.addEventListener('transitionend', () => {
     details.querySelector('.title').classList.add('active-title');
+  window.addEventListener('scroll', zoomOut);
   }, {once: true});
   setTimeout(() => {
     darkBg.classList.add('dark-bg')
     details.style.opacity = 1;
 
   }, 0);
+
   darkBg.addEventListener('click', zoomOut);
-
-  window.addEventListener('scroll', zoomOut, {once: true});
-
 }
 
 const zoomOut = (event) => {
@@ -107,6 +106,7 @@ const zoomOut = (event) => {
 
   // if (zoomDiv && darkBg) {
     console.log('zoom Out');
+    console.log(event)
     console.log(zoomDiv);
     console.log(darkBg);
     zoomDiv.style.transform = null;
@@ -136,6 +136,11 @@ const zoomOut = (event) => {
     // });
     darkBg.classList.remove('dark-bg');
   // }
+
+    //Removal of event listeners
+    zoomDiv.addEventListener('click', zoomOut);
+    darkBg.removeEventListener('click', zoomOut);
+    window.removeEventListener('scroll', zoomOut);
 }
 
 
