@@ -1,0 +1,9 @@
+.painting-form {
+  flex-direction: column;
+}
+
+@media (min-width: 990px) {
+  .painting-form {
+    flex-direction: row;
+  }
+}
