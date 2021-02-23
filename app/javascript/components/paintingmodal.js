@@ -138,7 +138,7 @@ const zoomOut = (event) => {
   // }
 
     //Removal of event listeners
-    zoomDiv.addEventListener('click', zoomOut);
+    zoomDiv.removeEventListener('click', zoomOut);
     darkBg.removeEventListener('click', zoomOut);
     window.removeEventListener('scroll', zoomOut);
 }

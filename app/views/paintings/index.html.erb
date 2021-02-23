@@ -7,12 +7,25 @@
   </div>
 
   <% @themes.each do |theme|  %>
-    <% next if theme.paintings.empty? %>
+    <%# next if theme.paintings.empty? %>
 
     <div class="container admin-theme">
-      <h4 class="category title active-title">
-        <%= theme.name %>
-      </h4>
+      <div class="d-flex theme-bar">
+        <h4 class="category title active-title">
+          <%= theme.name %>
+        </h4>
+        <h4 class="category icons">
+          <i class="fas fa-pencil-alt mr-2 icon"></i>
+
+          <% if theme.paintings.empty? %>
+            <%= link_to theme_path(theme), method: :delete, data: { confirm: 'Vous êtes sûr?' } do %>
+              <i class="far fa-trash-alt mr-3 icon"></i>
+            <% end %>
+          <% end %>
+
+        </h4>
+
+      </div>
       <div class="">
         <% theme.paintings.sort_by(&:year).reverse.each do |painting| %>
           <%= cl_image_tag painting.photo.key, class: "square-painting", "data-index" => painting.id %>
@@ -22,6 +35,14 @@
 
   <% end %>
 </div>
+
+<div class="themes">
+  <%= simple_form_for @theme do |f| %>
+    <%= f.input :name, label: false %>
+    <%= f.button :submit, value: 'Ajouter', class: "btn btn-primary" %>
+  <% end %>
+</div>
+
 
 <!-- Add a painting -->
 <%= render partial:'shared/modal_painting', locals: {painting: @painting} %>

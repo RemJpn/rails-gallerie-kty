@@ -1,9 +1,10 @@
 class PaintingsController < ApplicationController
   def index
-    @themes = Theme.all
+    @themes = Theme.all.sort_by(&:name)
     @paintings = Painting.all
 
     @painting = Painting.new
+    @theme = Theme.new
   end
 
   def create

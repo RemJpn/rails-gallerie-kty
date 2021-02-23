@@ -2,3 +2,27 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+.icons {
+  margin-left: 1rem;
+
+  .icon {
+    margin-left: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+
+.fa-pencil-alt {
+  opacity: 0;
+}
+
+.theme-bar {
+  width: fit-content;
+
+  &:hover {
+    .fa-pencil-alt {
+      opacity: 1;
+    }
+  }
+}
