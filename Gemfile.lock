@@ -104,6 +104,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httpclient (2.8.3)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.1)
@@ -222,6 +223,8 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    tinify (1.5.0)
+      httpclient (~> 2.6)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -277,6 +280,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  tinify
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

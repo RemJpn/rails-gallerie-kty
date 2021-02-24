@@ -11,19 +11,19 @@ const updateTheme = (e) => {
 }
 
 const initUpdateTheme = () => {
-  if (document.querySelector('.add-themes')) { //if we are on the admin page
+  //if we are on the admin page
+  if (document.querySelector('.add-themes')) {
+    const pencilIcons = document.querySelectorAll('.fa-pencil-alt');
+    const titles = document.querySelectorAll('.title');
 
+
+    pencilIcons.forEach((pencilIcon) => {
+      pencilIcon.addEventListener('click', updateTheme);
+    });
+    titles.forEach((title) => {
+      title.addEventListener('click', updateTheme);
+    });
   }
-  const pencilIcons = document.querySelectorAll('.fa-pencil-alt');
-  const titles = document.querySelectorAll('.title');
-
-
-  pencilIcons.forEach((pencilIcon) => {
-    pencilIcon.addEventListener('click', updateTheme);
-  });
-  titles.forEach((title) => {
-    title.addEventListener('click', updateTheme);
-  });
 }
 
 export { initUpdateTheme }

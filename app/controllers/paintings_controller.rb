@@ -11,6 +11,12 @@ class PaintingsController < ApplicationController
     @painting = Painting.new(painting_params)
     @painting.theme = Theme.find(painting_params[:theme_id])
 
+    # binding.pry
+    # source_data = File.read(@painting.photo.key)
+    # @painting.photo = Tinify.from_buffer(source_data).to_buffer
+    # source = Tinify.from_file(@painting.photo)
+    # source.to_file(@painting.photo)
+
     if @painting.save
       redirect_to admin_path
     else
