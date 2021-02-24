@@ -14,6 +14,11 @@
         <h4 class="category title active-title">
           <%= theme.name %>
         </h4>
+        <div class="update-theme d-none">
+          <%= simple_form_for theme do |f| %>
+            <%= f.input :name, label: false %>
+          <% end %>
+        </div>
         <h4 class="category icons">
           <i class="fas fa-pencil-alt mr-2 icon"></i>
 
@@ -36,7 +41,10 @@
   <% end %>
 </div>
 
-<div class="themes">
+<div class="add-themes">
+  <hr>
+  <br>
+  <p>Ajouter un thème: </p>
   <%= simple_form_for @theme do |f| %>
     <%= f.input :name, label: false %>
     <%= f.button :submit, value: 'Ajouter', class: "btn btn-primary" %>
