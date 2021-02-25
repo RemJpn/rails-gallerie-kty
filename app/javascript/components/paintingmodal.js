@@ -8,7 +8,6 @@ const toggleModal = (e) => {
 
 
 const zoomIn = (element) => {
-  console.log('zoom In');
 
   //Select zoom div
   const zoomDiv = document.querySelector(`#zoom-${element.dataset.index}`);
@@ -46,7 +45,6 @@ const zoomIn = (element) => {
     zoomDiv.style.flexDirection = 'column';
 
     scaleX = windowWidth * 0.8 / paintingCoord.width;
-    console.log(`scaleX = ${scaleX}`);
     scaleY = windowHeight * 0.5 / paintingCoord.height;
     scaleFactor = Math.min(scaleX, scaleY);
 
@@ -64,13 +62,6 @@ const zoomIn = (element) => {
     translateY = (windowHeight - paintingCoord.height * scaleFactor) / 2 - paintingCoord.y;
 
   }
-    console.log(`painting width = ${paintingCoord.width}`);
-    console.log(`window width = ${windowWidth}`);
-    console.log(`window height = ${windowHeight}`);
-  console.log(scaleFactor);
-  console.log(translateX);
-  console.log(translateY);
-
 
   //Apply transformation after adding the clone to the DOM
   setTimeout(() => {
@@ -105,10 +96,6 @@ const zoomOut = (event) => {
   const darkBg = document.querySelector('.empty-bg');
 
   // if (zoomDiv && darkBg) {
-    console.log('zoom Out');
-    console.log(event)
-    console.log(zoomDiv);
-    console.log(darkBg);
     zoomDiv.style.transform = null;
 
     const paintingClone = zoomDiv.querySelector('.framed-painting');

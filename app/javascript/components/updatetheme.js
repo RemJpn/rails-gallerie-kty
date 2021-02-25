@@ -1,5 +1,4 @@
 const updateTheme = (e) => {
-  console.log(e.currentTarget);
   const themeBar = e.currentTarget.parentElement.parentElement;
 
   const title = themeBar.querySelector('.title');
