@@ -1,4 +1,5 @@
 meta_product_name: "La galerie de Kty"
 meta_title: "La galerie de Kty - Artiste peintre"
 meta_description: "Découvrez les oeuvres d'art réalisées par Cathy Schwartz"
-meta_image: "galerie_kty.png" # should exist in `app/assets/images/`
+meta_image: "app/assets/images/galerie_kty.png" # should exist in `app/assets/images/`
+twitter_account: "@galerie_kty"   # required for Twitter Cards
