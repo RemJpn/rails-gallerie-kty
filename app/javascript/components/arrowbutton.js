@@ -29,14 +29,14 @@ const initArrowButtons = () => {
   const arrowButtons = document.querySelectorAll('.arrow');
   arrowButtons.forEach( button => {
     button.addEventListener('click', handleClick);
-
     // Hide next arrows if not enough paintings to require slide
     window.setTimeout( () => {
       const slider = button.parentElement.querySelector('.slider-cards');
+    console.log(slider.scrollWidth)
       if ( slider.offsetWidth < slider.scrollWidth && button.classList.contains('next')) {
         button.classList.remove('button-hidden');
       }
-    }, 200);
+    }, 1000);
 
   });
 
