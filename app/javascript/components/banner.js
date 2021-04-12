@@ -23,7 +23,6 @@ const showBanner = () => {
     title.style.transition = "opacity 0.5s ease-out";
     title.style.opacity = 1;
   }, 1000);
-
 }
 
 

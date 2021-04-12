@@ -1,8 +1,6 @@
 <%= render 'shared/navbar' %>
 
 <div class="paintings">
-<!--   <div class="container">
-  </div> -->
 
   <div class="banner">
     <% @paintings.shuffle.first(20).each do |painting| %>
@@ -18,8 +16,6 @@
     <% end %>
     <h1 class="main-title">Bienvenue chez Kty </h1>
   </div>
-
-
 
   <% @themes.each do |theme|  %>
     <% next if theme.paintings.empty? %>
@@ -43,9 +39,7 @@
               </div>
             <% end %>
           </div>
-          <!-- <i class="fas fa-arrow-circle-right arrow"></i> -->
           <button class="arrow next button-hidden">&#8594;</button>
-
         </div>
       </div>
 
